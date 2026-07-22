@@ -14,7 +14,8 @@ public class AutoTargetController : TargetController, INeedTarget
     // надо дописать
     public void SetPotentialTarget(List<Unit> potentialTargets)
     {
-        //return;
+        var target = GetMostTarget(potentialTargets);
+        SetTarget(target);
     }
     // надо lдописать
     private Unit FindEnemyBase()

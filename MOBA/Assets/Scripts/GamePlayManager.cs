@@ -63,6 +63,7 @@ public class GamePlayManager : MonoBehaviour
                             potentialTargets.Add(enemy);
                         }
                     }
+                    attacker.SetPotentialTarget(new List<Unit>(potentialTargets));
                 }
             }
         }
