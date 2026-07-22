@@ -32,6 +32,16 @@ public class GamePlayManager : MonoBehaviour
     {
         _allUnits.Add(unit);
         onAdded?.Invoke(unit);
+        FindMyTarget(unit);
+    }
+    private void FindMyTarget(Unit unit)
+    {
+        if (!(unit is INeedTarget needTarget))
+        {
+            return;
+        }
+        var target = Find<Base>(u=>u.GetTeamTag().GetTeamId() != unit.GetTeamTag().GetTeamId())[0];
+        needTarget.SetTarget(target);
     }
     public void Unregister(Unit unit)
     {

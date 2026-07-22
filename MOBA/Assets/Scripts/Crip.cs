@@ -1,8 +1,13 @@
 using UnityEngine;
 
-public class Crip : MovebleUnit
+public class Crip : MovebleUnit,INeedTarget
 {
+    
     private Unit _target;
+    private void Start()
+    {
+        Initialize();
+    }
     private void Update()
     {
         if (_target != null)
@@ -11,7 +16,7 @@ public class Crip : MovebleUnit
         }
         
     }
-    private void SetTarget(Unit unit)
+    public void SetTarget(Unit unit)
     {
         _target = unit;
     }
