@@ -17,7 +17,6 @@ public class ScoreManager : MonoBehaviour
     {
         _points[teamId] += amount;
         onPointsChanged?.Invoke(teamId, _points[teamId]);
-        Debug.Log($"Кол-во очков у команды {teamId}: {_points[teamId]}");
     }
 
     public bool TrySpend(int teamId, int amount)
@@ -25,7 +24,6 @@ public class ScoreManager : MonoBehaviour
         if (_points[teamId] < amount) return false;
         _points[teamId] -= amount;
         onPointsChanged?.Invoke(teamId, _points[teamId]);
-        Debug.Log($"Кол-во очков у команды {teamId}: {_points[teamId]}");
         return true;
         
     }
