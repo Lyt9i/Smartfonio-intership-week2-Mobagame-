@@ -29,7 +29,12 @@ public class Crip : MovebleUnit, INeedTarget
     {
         if (potentialTargets == null || potentialTargets.Count == 0)
         {
-            return; // цель не меняем — крип продолжает идти к текущей (базе)
+            if (_target == null) 
+            {
+                var enemyBase = GamePlayManager.Instance.GetEnemiesBases(GetTeamTag())[0];
+                SetTarget(enemyBase);
+            }
+            return; 
         }
 
         Unit nearest = null;
