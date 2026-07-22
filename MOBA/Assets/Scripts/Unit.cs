@@ -6,7 +6,9 @@ using UnityEngine;
 [SelectionBase]
 public abstract class Unit : MonoBehaviour
 {
-
+    // Начисление очков за убийство юнита
+    [SerializeField] protected int _killReward = 0;
+    public int GetKillReward() => _killReward;
     protected Health _health;
     protected TeamTag _teamTag;
     protected virtual void Awake()
