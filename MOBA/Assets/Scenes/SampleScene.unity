@@ -1639,6 +1639,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5674535888092983954, guid: ce3be5d885d10c140940c6c630f4e023, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 5674535888092983954, guid: ce3be5d885d10c140940c6c630f4e023, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9050977134358700547, guid: ce3be5d885d10c140940c6c630f4e023, type: 3}
       propertyPath: m_Name
       value: Choosing the team
