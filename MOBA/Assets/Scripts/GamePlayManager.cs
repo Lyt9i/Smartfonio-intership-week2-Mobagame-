@@ -88,6 +88,7 @@ public class GamePlayManager : MonoBehaviour
         _allUnits.Add(unit);
         onAdded?.Invoke(unit);
         FindMyTarget(unit);
+        
     }
     private void FindMyTarget(Unit unit)
     {

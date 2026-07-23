@@ -8,8 +8,9 @@ public class Crip : MovebleUnit, INeedTarget
     private TargetController _targetController;
     private void Start()
     {
-        Initialize();
         _targetController = GetComponent<TargetController>();
+        Initialize();
+        
     }
     private void Update()
     {
