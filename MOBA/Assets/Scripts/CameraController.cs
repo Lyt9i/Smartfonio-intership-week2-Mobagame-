@@ -4,7 +4,7 @@ public class CameraController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 10f;
-    [SerializeField] private float sprintMultiplier = 2f;
+    [SerializeField] private float sprintMultiplier = 2f; // Во сколько раз увеличивается скорость
     
     [Header("Rotation Settings")]
     [SerializeField] private float rotationSpeed = 2f;
@@ -38,25 +38,24 @@ public class CameraController : MonoBehaviour
     
     private void HandleMovement()
     {
-        // Получаем ввод
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         
-        // ВАЖНО: направление движения зависит от поворота КАМЕРЫ
-        // Forward и Right камеры, но спроецированные на плоскость XZ для горизонтального движения
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
         
-        // Если камера смотрит вниз/вверх, forward имеет вертикальную компоненту
-        // Мы используем ее для движения вниз/вверх при нажатии W/S
         Vector3 moveDirection = (forward * vertical + right * horizontal).normalized;
         
-        // Если есть движение
         if (moveDirection != Vector3.zero)
         {
+            // Базовая скорость
             float currentSpeed = moveSpeed;
-            if (Input.GetKey(KeyCode.LeftControl))
+            
+            // Если зажат Shift - увеличиваем скорость
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
                 currentSpeed *= sprintMultiplier;
+            }
             
             transform.position += moveDirection * currentSpeed * Time.deltaTime;
         }
