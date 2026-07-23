@@ -7,6 +7,7 @@ public class CripFactory : MonoBehaviour
     [SerializeField] private TeamTag _teamTag;
     [SerializeField] private int _amount;
     [SerializeField] private float _timeDelay;
+    [SerializeField] private int _manualSpawnCost = 10;
     private float _currentDelay = 0;
 
     private void Update()
@@ -25,5 +26,21 @@ public class CripFactory : MonoBehaviour
             crip.Initialize();
         }
     }
+
+    public void TrySpawnByPlayer()
+    {
+        if (GameSession.PlayerTeamId != _teamTag.GetTeamId()) return;
+        if (!ScoreManager.Instance.TrySpend(_teamTag.GetTeamId(), _manualSpawnCost)) return;
+        SpawnOne();
+    }
+
+    private void SpawnOne()
+    {
+        var crip = Instantiate(_cripPrefab, transform);
+        crip.gameObject.SetActive(true);
+        crip.GetTeamTag().SetTeamId(_teamTag.GetTeamId());
+        crip.Initialize();
+    }
+    public TeamTag GetTeamTag() => _teamTag;
 
 }
