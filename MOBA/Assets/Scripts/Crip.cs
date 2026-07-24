@@ -6,19 +6,29 @@ public class Crip : MovebleUnit, INeedTarget
     
     private Unit _target;
     private TargetController _targetController;
+    private WeaponHandler _weaponHandler;
     private void Start()
     {
-        _targetController = GetComponent<TargetController>();
+       _targetController = GetComponent<TargetController>();
+        _weaponHandler = GetComponent<WeaponHandler>();
         Initialize();
         
     }
     private void Update()
     {
-        if (_target != null)
+        if (_target == null) return;
+
+        var distance = Vector3.Distance(_target.Position, Position);
+        var attackRange = _weaponHandler.GetWeapon().GetAttackRange();
+
+        if (distance > attackRange)
         {
             SetDestination(_target.Position);
         }
-        
+        else
+        {
+            SetDestination(Position); // стоп, атака берёт на себя AutoAttacker
+        }
     }
     public void SetTarget(Unit unit)
     {
