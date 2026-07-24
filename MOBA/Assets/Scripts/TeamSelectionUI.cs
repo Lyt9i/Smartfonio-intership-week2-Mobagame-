@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TeamSelectionUI : MonoBehaviour
 {
     [SerializeField] private Button _redTeamButton;
+    [SerializeField] private GameObject _redTeamText;
     [SerializeField] private Button _blueTeamButton;
+    [SerializeField] private GameObject _blueTeamText;
     [SerializeField] private GameObject _selectionPanel;
     [SerializeField] private GameObject[] _objectsToEnableAfterSelection; // Level, бой и т.п.
 
@@ -25,5 +28,13 @@ public class TeamSelectionUI : MonoBehaviour
             obj.SetActive(true);
 
         _selectionPanel.SetActive(false);
+        if (teamId == 1)
+        {
+            _redTeamText.SetActive(true);
+        }
+        else
+        {
+            _redTeamText.SetActive(false);
+        }
     }
 }
