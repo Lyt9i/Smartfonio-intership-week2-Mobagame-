@@ -34,7 +34,7 @@ public class TeamSelectionUI : MonoBehaviour
         }
         else
         {
-            _redTeamText.SetActive(false);
+            _blueTeamText.SetActive(true);
         }
     }
 }
