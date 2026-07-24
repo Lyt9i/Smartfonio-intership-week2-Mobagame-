@@ -65,6 +65,8 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+            return;
             isRotating = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
