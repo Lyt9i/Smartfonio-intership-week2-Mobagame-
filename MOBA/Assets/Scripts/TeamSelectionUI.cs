@@ -5,6 +5,7 @@ using TMPro;
 public class TeamSelectionUI : MonoBehaviour
 {
     [SerializeField] private Button _redTeamButton;
+    [SerializeField] private int _startPoint;
     [SerializeField] private GameObject _redTeamText;
     [SerializeField] private Button _blueTeamButton;
     [SerializeField] private GameObject _blueTeamText;
@@ -23,6 +24,7 @@ public class TeamSelectionUI : MonoBehaviour
     private void SelectTeam(int teamId)
     {
         GameSession.SetPlayerTeam(teamId);
+        ScoreManager.Instance.AddPoints(teamId, _startPoint);
 
         foreach (var obj in _objectsToEnableAfterSelection)
             obj.SetActive(true);
